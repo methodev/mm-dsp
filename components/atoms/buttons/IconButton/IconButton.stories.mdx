@@ -1,0 +1,94 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import icons from '@/assets/graphics/icons';
+import { mainOf, idsOf } from '@/utils/ui-handlers';
+import { kinds, sizes } from '../../Icon/characteristics';
+import IconButton from './IconButton.vue';
+
+<Meta title='Atoms/Buttons/IconButton' component={IconButton} parameters={{ }} />
+
+<Title of={IconButton} />
+
+> *This component is categorized as an atom.*
+
+## Description
+<Description of={IconButton} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { IconButton },
+      template: `<IconButton :icon="iconKnob" :kind="kindKnob" :size="sizeKnob" :tooltip="tooltipKnob" :disabled="disabledKnob" @click="handleClick" />`,
+      props: {
+        iconKnob: {
+          type: String,
+          default: select('Icon', Object.keys(icons), 'play')
+        },
+        kindKnob: {
+          type: String,
+          default: select('Kind', idsOf(kinds), mainOf(kinds))
+        },
+        sizeKnob: {
+          type: String,
+          default: select('Size', idsOf(sizes), mainOf(sizes))
+        },
+        tooltipKnob: {
+          type: String,
+          default: text('Tooltip', 'Play')
+        },
+        disabledKnob: {
+          type: Boolean,
+          default: boolean('Disabled', false)
+        }
+      },
+      methods: {
+        handleClick(e) {
+          action('Click')(e);
+        }
+      }
+    }}
+  </Story>
+</Canvas>
+
+### Group
+<Canvas>
+  <Story name='Group'>
+    {{
+      components: { IconButton },
+      template: `
+        <div>
+          <IconButton
+            v-for="({ icon, kind, tooltip }, index) in group"
+            :key="index"
+            :kind="kind"
+            :icon="icon"
+            :tooltip="tooltip"
+          />
+        </div>
+      `,
+      data() {
+        return {
+          group: [
+            {
+              icon: 'single-man-circle',
+              kind: 'gray',
+              tooltip: 'Man'
+            },
+            {
+              icon: 'single-woman-circle',
+              kind: 'blue',
+              tooltip: 'Woman'
+            }
+          ]
+        };
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={IconButton} />

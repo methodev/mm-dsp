@@ -1,0 +1,33 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { text } from '@storybook/addon-knobs';
+import IdentityCircle from './IdentityCircle.vue';
+
+<Meta title='Atoms/IdentityCircle' component={IdentityCircle} parameters={{ }} />
+
+<Title of={IdentityCircle} />
+
+> *This component is categorized as an atom.*
+
+## Description
+<Description of={IdentityCircle} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { IdentityCircle },
+      template: '<IdentityCircle :initials="initialsKnob.substring(0, 2)"/>',
+      props: {
+        initialsKnob: {
+          type: String,
+          default: text('Initials', 'JK')
+        }
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={IdentityCircle} />

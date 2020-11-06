@@ -1,0 +1,40 @@
+// ===================================================|
+// Storybook: SCAFFOLDING
+
+// -------------------------| Global imports
+:global {
+  @import '../../../assets/styles/global/modal.scss';
+  @import '../../../assets/styles/global/tooltip.scss';
+}
+
+// -------------------------| Body
+body {
+  top: 50%;
+  min-width: auto;
+  margin: 0;
+}
+
+pre {
+  display: block;
+  width: 100%;
+  padding: 2px 10px;
+  font-size: map-get($swatches-typo-font-sizes, 'font-size-16');
+  font-weight: map-get($swatches-typo-font-weights, 'font-weight-bold');
+  color: white;
+  background-color: map-get($swatches-colors-black, 'scol-base');
+  border-radius: map-get($roles-borders-radiuses, 'board');
+  box-shadow: map-get($roles-box-shadows, 'board');
+}
+
+// -------------------------| Styleguide / Icons
+:global {
+  .svg-icon {
+    @include dimensions-square(24px);
+
+    display: block;
+
+    svg {
+      fill: currentColor;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+// ===================================================|
+// Utilities: WRAPPERS
+
+// -------------------------| Placeholders
+%ph-wrapper {
+  margin: 0 auto;
+}
+
+%ph-wrapper-layout {
+  @extend %ph-wrapper;
+
+  max-width: map-get($roles-screens, 'max');
+}
+
+// -------------------------| Layout
+.layout {
+  @extend %ph-wrapper-layout;
+}
+
+.layout-with-padding {
+  @extend %ph-wrapper-layout;
+
+  padding: $grid-gutter;
+}

@@ -1,0 +1,39 @@
+// ===================================================|
+// Atoms: HEADING
+
+// -------------------------| Root
+.root {
+  margin: 0;
+  line-height: $roles-size-button-height;
+
+  &:not(:last-child) {
+    margin-bottom: map-get($roles-spaces, 'heading');
+  }
+
+  i:first-child {
+    margin-right: map-get($swatches-spaces, 'space-05');
+    vertical-align: text-top;
+  }
+}
+
+// -------------------------| Types
+$heading-types: 'heading1' 'heading2' 'heading3';
+
+@each $heading in $heading-types {
+  .#{$heading} {
+    font-size: map-get($roles-typo-font-sizes, $heading);
+    font-weight: map-get($roles-typo-font-weights, $heading);
+  }
+}
+
+.heading {
+  //
+}
+
+.heading2 {
+  //
+}
+
+.heading3 {
+  //
+}

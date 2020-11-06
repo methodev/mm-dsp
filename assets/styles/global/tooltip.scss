@@ -1,0 +1,116 @@
+// ===================================================|
+// Global: TOOLTIP
+
+// -------------------------| Variables
+$speed: map-get($roles-transitions, 'tooltip');
+$offset: 5px;
+
+// -------------------------| Root
+.tooltip {
+  z-index: z(tooltip);
+  max-width: $roles-size-modal-max-width;
+  background-color: transparent;
+
+  .tooltip-inner:not(.popover-inner) {
+    padding: 2px 6px;
+    font-size: map-get($roles-typo-font-sizes, 'tooltip');
+    color: map-get($roles-colors-texts, 'negative');
+    background: map-get($roles-colors-backgrounds, 'tooltip');
+    border-radius: 2px;
+    opacity: 0.8;
+  }
+
+  .tooltip-arrow:not(.popover-arrow) {
+    @include dimensions-square(0);
+
+    position: absolute;
+    z-index: 1;
+    display: none; // not needed
+    border-color: map-get($roles-colors-backgrounds, 'tooltip');
+    border-style: solid;
+  }
+
+  &[x-placement^='top'] {
+    padding-bottom: $offset;
+
+    .tooltip-arrow {
+      bottom: -5px;
+      left: calc(50% - 5px);
+      margin-top: 0;
+      margin-bottom: 0;
+      border-width: 5px 5px 0;
+      border-right-color: transparent !important;
+      border-bottom-color: transparent !important;
+      border-left-color: transparent !important;
+    }
+  }
+
+  &[x-placement^='bottom'] {
+    padding-top: $offset;
+
+    .tooltip-arrow {
+      top: -5px;
+      left: calc(50% - 5px);
+      margin-top: 0;
+      margin-bottom: 0;
+      border-width: 0 5px 5px;
+      border-top-color: transparent !important;
+      border-right-color: transparent !important;
+      border-left-color: transparent !important;
+    }
+  }
+
+  &[x-placement^='right'] {
+    padding-left: $offset;
+
+    .tooltip-arrow {
+      @include margin-h(0);
+
+      top: calc(50% - 5px);
+      left: -5px;
+      border-width: 5px 5px 5px 0;
+      border-top-color: transparent !important;
+      border-bottom-color: transparent !important;
+      border-left-color: transparent !important;
+    }
+  }
+
+  &[x-placement^='left'] {
+    padding-right: $offset;
+
+    .tooltip-arrow {
+      @include margin-h(0);
+
+      top: 50% !important;
+      right: -5px;
+      border-width: 5px 0 5px 5px;
+      border-top-color: transparent !important;
+      border-right-color: transparent !important;
+      border-bottom-color: transparent !important;
+      transform: translateY(-50%);
+    }
+  }
+
+  &[aria-hidden='true'] {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity $speed, visibility $speed;
+  }
+
+  &[aria-hidden='false'] {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity $speed;
+  }
+
+  .popover-arrow {
+    display: none;
+  }
+}
+
+.popover {
+  z-index: z(popover);
+  max-width: none;
+}

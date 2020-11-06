@@ -1,0 +1,195 @@
+// ===================================================|
+// Atoms: BUTTON
+
+// -------------------------| Data
+$button-offset: 12px;
+$button-min-width: 80px;
+//$button-max-width: 200px;
+$button-line-height: map-get($roles-typo-line-heights, 'button');
+$button-padding-v: ($roles-size-button-height - $roles-size-icon) / 2;
+
+$button-shadows: (
+  'normal': 0 2px 5px
+    rgba(map-get($swatches-colors-midnight, 'scol-base'), 0.25),
+  'active': 0 8px 20px
+    rgba(map-get($swatches-colors-midnight, 'scol-base'), 0.2)
+);
+
+$button-types: (
+  'blue': (
+    'normal': (
+      'background-color': map-get($swatches-colors-blue, 'scol-dark'),
+      'color': map-get($swatches-colors-white, 'scol-base'),
+      'box-shadow': map-get($button-shadows, 'normal')
+    ),
+    'hover': (
+      'background-color': map-get($swatches-colors-blue, 'scol-light')
+    ),
+    'active': (
+      'background-color': map-get($swatches-colors-red, 'scol-dark'),
+      'box-shadow': map-get($button-shadows, 'active')
+    )
+  ),
+  'outlined': (
+    'normal': (
+      'color': map-get($swatches-colors-blue, 'scol-dark'),
+      'border': 1px solid map-get($swatches-colors-blue, 'scol-dark')
+    ),
+    'hover': (
+      'color': map-get($swatches-colors-blue, 'scol-light'),
+      'border': 1px solid map-get($swatches-colors-blue, 'scol-light')
+    ),
+    'active': (
+      'color': map-get($swatches-colors-red, 'scol-dark'),
+      'border': 1px solid map-get($swatches-colors-red, 'scol-dark')
+    )
+  ),
+  'transparent': (
+    'normal': (
+      'color': map-get($swatches-colors-blue, 'scol-dark')
+    ),
+    'hover': (
+      'color': map-get($swatches-colors-blue, 'scol-light')
+    ),
+    'active': (
+      'color': map-get($swatches-colors-red, 'scol-dark')
+    )
+  )
+);
+
+$button-default-type: 'blue';
+
+// -------------------------| Mixins
+@mixin generate-state-props($state) {
+  @for $p from 1 through length($state) {
+    $property: nth(nth($state, $p), 1);
+    $value: map-get($state, $property);
+
+    #{$property}: $value;
+  }
+}
+
+@mixin btn-generator($type) {
+  $state-normal: map-get($type, 'normal');
+  $state-hover: map-get($type, 'hover');
+  $state-active: map-get($type, 'active');
+
+  @include generate-state-props($state-normal);
+
+  &:hover {
+    @include generate-state-props($state-hover);
+  }
+
+  &:active {
+    @include generate-state-props($state-active);
+  }
+}
+
+// -------------------------| Root
+.root {
+  @include padding-h($button-offset * 1.33);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: $button-min-width;
+  height: $roles-size-button-height;
+  line-height: $button-line-height;
+  user-select: none;
+  border-radius: 10px;
+  transition: all map-get($roles-transitions, 'button') ease-in-out;
+
+  @for $btn from 1 through length($button-types) {
+    $name: nth(nth($button-types, $btn), 1);
+    $value: map-get($button-types, $name);
+
+    @if $name == $button-default-type {
+      &:not([data-type]) {
+        @include btn-generator($value);
+      }
+    } @else {
+      &[data-type='#{$name}'] {
+        @include btn-generator($value);
+      }
+    }
+  }
+
+  @at-root {
+    button#{&} {
+      cursor: pointer;
+    }
+  }
+
+  &[data-type='transparent'] {
+    &,
+    .wrapper {
+      padding: 0;
+    }
+
+    [data-stage='dark'] & {
+      color: map-get($roles-colors-texts, 'negative');
+    }
+  }
+
+  + .root {
+    margin-left: map-get($roles-spaces, 'button');
+  }
+}
+
+// -------------------------| Wrapper
+.wrapper {
+  @util truncate;
+  @include padding-v($button-padding-v);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &,
+  > * {
+    height: $roles-size-icon;
+  }
+}
+
+// -------------------------| Main
+.main {
+  line-height: $roles-size-icon;
+}
+
+// -------------------------| Addon
+.addon {
+  vertical-align: middle;
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+// -------------------------| Prefix
+.prefix {
+  margin-right: $button-offset;
+}
+
+// -------------------------| Suffix
+.suffix {
+  margin-left: $button-offset;
+}
+
+// -------------------------| States
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.loading {
+  pointer-events: none;
+}
+
+.warning {
+  &[data-type] {
+    color: map-get($roles-colors-states, 'warning') !important;
+  }
+  &:not([data-type]) {
+    background-color: map-get($roles-colors-states, 'warning') !important;
+  }
+}

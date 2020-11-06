@@ -1,0 +1,11 @@
+// ===================================================|
+// Organisms: FORMS
+
+// -------------------------| States
+.valid {
+  color: map-get($roles-colors-states, 'success');
+}
+
+.invalid {
+  color: map-get($roles-colors-states, 'error');
+}

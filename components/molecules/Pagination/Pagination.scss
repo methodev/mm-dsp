@@ -1,0 +1,46 @@
+// ===================================================|
+// Molecules: PAGINATION
+
+// -------------------------| Variables
+$system-color: map-get($roles-colors-texts, 'system');
+$item-buffer: map-get($swatches-spaces, 'space-12');
+$pagination-meta-paddings: 10px 12px;
+
+// -------------------------| Root
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+// -------------------------| Label
+.label {
+  padding: $pagination-meta-paddings;
+  margin-right: $item-buffer;
+  color: $system-color;
+  user-select: none;
+}
+
+// -------------------------| Navigation
+.nav {
+  display: flex;
+
+  button {
+    display: flex;
+
+    &:not(:disabled):hover {
+      cursor: pointer;
+    }
+
+    &:first-of-type {
+      margin-right: $item-buffer;
+    }
+  }
+}
+
+// -------------------------| Loader
+.loader {
+  @include absolute-centered-y();
+
+  right: 100%;
+}

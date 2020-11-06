@@ -1,0 +1,29 @@
+// ===================================================|
+// Atoms: IDENTITY CIRCLE
+
+// -------------------------| Variables
+$circle-font-size: map-get($roles-typo-font-sizes, 'super-small');
+$circle-font-weight: map-get(
+  $swatches-typo-font-weights,
+  'font-weight-semibold'
+);
+$circle-color: map-get($roles-colors-texts, 'system');
+$circle-border: map-get($swatches-borders, 'sborder-1px-solid-gray');
+$circle-border-radius: map-get($swatches-border-radiuses, 'circle');
+$circle-dimensions: 24px;
+
+// -------------------------| Root
+.root {
+  @include dimensions-square($circle-dimensions);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $circle-font-size;
+  font-weight: $circle-font-weight;
+  color: $circle-color;
+  text-transform: uppercase;
+  user-select: none;
+  border: $circle-border;
+  border-radius: $circle-border-radius;
+}

@@ -1,0 +1,41 @@
+// ===================================================|
+// Molecules: TABS
+
+// -------------------------| Variables
+$tab-offset: 12px;
+$tab-text-color: map-get($roles-colors-texts, 'system');
+$tab-current-color: map-get($swatches-colors-blue, 'scol-base');
+
+// -------------------------| Root
+.root {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+// -------------------------| Tab
+.tab {
+  @include padding-h($tab-offset * 2);
+  @include padding-v($tab-offset / 2);
+
+  display: inline-flex;
+  align-items: center;
+  color: $tab-text-color;
+  user-select: none;
+  border-radius: $roles-size-button-height / 2;
+  transition: all map-get($roles-transitions, 'button') ease-in-out;
+
+  > span {
+    display: flex;
+
+    > span {
+      @include padding-v(5px);
+    }
+  }
+}
+
+// -------------------------| States
+.current {
+  color: map-get($roles-colors-texts, 'negative');
+  pointer-events: none;
+  background-color: $tab-current-color;
+}

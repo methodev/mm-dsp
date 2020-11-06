@@ -1,0 +1,30 @@
+// ===================================================|
+// Storybook: DOCS
+
+:global {
+  #docs-root,
+  .sbdocs-wrapper,
+  .sbdocs-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  // -------------------------| Wrapper
+  .sbdocs-wrapper {
+    @include padding-v(2rem !important);
+  }
+
+  // -------------------------| Content
+  .sbdocs-content {
+    max-width: 1200px !important;
+    margin: 0 auto;
+  }
+
+  // -------------------------| Typeset
+  .docblock-typeset {
+    * {
+      line-height: normal !important;
+    }
+  }
+}

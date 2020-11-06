@@ -1,0 +1,101 @@
+// ===================================================|
+// Atoms: TAG
+
+// -------------------------| Variables
+// Small tag and general styles
+$tag-border-color: map-get($swatches-colors-silver, 'scol-dark');
+
+$tag-base-padding: map-get($roles-spaces, 'tag');
+$tag-border-width: 1px;
+$tag-border-raidus: $tag-height / 2;
+
+$icon-offset: map-get($swatches-spaces, 'space-12');
+
+// Big tag specific styles
+$big-tag-base-padding: map-get($swatches-spaces, 'space-12');
+$big-tag-without-icon-padding: 18px;
+
+$big-tag-border-radius: map-get($swatches-spaces, 'space-24');
+
+// -------------------------| Root
+.root {
+  @extend %flex-center-vh;
+  @include padding-v($tag-base-padding);
+  @include padding-h($tag-base-padding * 2);
+
+  max-width: 100%;
+  min-height: $tag-height;
+  color: map-get($roles-colors-texts, 'system');
+  word-break: break-word;
+  border: $tag-border-width solid $tag-border-color;
+  border-radius: $tag-border-raidus;
+}
+
+// -------------------------| Icon
+.icon {
+  margin-right: $icon-offset;
+  color: map-get($roles-colors-icons, 'system');
+}
+
+// -------------------------| Tag label
+.tag-label {
+  @util truncate;
+
+  flex: 1;
+  text-transform: lowercase;
+  user-select: none;
+}
+
+// -------------------------| Removable
+.removable {
+  justify-content: space-between;
+  padding: $tag-base-padding $tag-base-padding $tag-base-padding
+    $tag-base-padding * 2;
+}
+
+// -------------------------| Tag remove button
+.remove {
+  @extend %flex-center-vh;
+
+  margin-left: map-get($roles-spaces, 'atoms');
+}
+
+// -------------------------| Tag sizes
+.big {
+  padding: $big-tag-base-padding;
+  color: map-get($roles-colors-texts, 'body');
+  border: $tag-border-width solid $tag-border-color;
+  border-radius: $big-tag-border-radius;
+
+  .tag-label {
+    text-transform: none;
+  }
+
+  .remove {
+    position: relative;
+    margin-left: $icon-offset;
+
+    // Extend the button hit area
+    &::after {
+      position: absolute;
+      top: -$big-tag-base-padding;
+      right: -$big-tag-base-padding;
+      bottom: -$big-tag-base-padding;
+      left: -$big-tag-base-padding;
+      content: '';
+      border-radius: $big-tag-border-radius;
+    }
+  }
+
+  /*
+    When no icon is present,
+    the side padding is bigger than the base one.
+  */
+  &:not(.removable) {
+    padding-right: $big-tag-without-icon-padding;
+  }
+
+  &:not(.has-icon) {
+    padding-left: $big-tag-without-icon-padding;
+  }
+}

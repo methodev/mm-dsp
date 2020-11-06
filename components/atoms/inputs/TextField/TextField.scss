@@ -1,0 +1,27 @@
+// ===================================================|
+// Atoms: TEXT FIELD
+
+// -------------------------| Variables
+$element-height: $roles-size-textfield-height;
+
+// -------------------------| Root
+.root {
+  @include padding-v($element-height);
+}
+
+// -------------------------| Element
+.element {
+  height: $element-height;
+  line-height: $element-height;
+}
+
+// -------------------------| Label
+.label {
+  display: flex;
+  align-items: center;
+}
+
+// -------------------------| Placeholder
+.placeholder-info {
+  margin-left: map-get($roles-spaces, 'atoms') / 2;
+}

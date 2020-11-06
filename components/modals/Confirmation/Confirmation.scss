@@ -1,0 +1,24 @@
+// ===================================================|
+// Modals: CONFIRMATION
+
+// -------------------------| Variables
+
+// -------------------------| Root
+.root {
+  max-width: $roles-size-modal-max-width !important;
+}
+
+// -------------------------| Text
+.text {
+  white-space: pre-wrap;
+}
+
+// -------------------------| Addon
+.addon {
+  margin-top: map-get($roles-spaces, 'molecules');
+}
+
+// -------------------------| Checkbox
+.checkbox {
+  margin-top: map-get($roles-spaces, 'molecules');
+}

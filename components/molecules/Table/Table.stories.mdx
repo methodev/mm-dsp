@@ -1,0 +1,102 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { storiesOf } from '@storybook/vue';
+import { boolean } from '@storybook/addon-knobs';
+import Table from './Table';
+
+<Meta title='Molecules/Table' component={Table} parameters={{ component: Table }} />
+
+<Title of={Table} />
+
+> *This component is categorized as an molecule.*
+
+## Description
+<Description of={Table} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { Table },
+      template: `
+      <div :style="{ padding: '0 8px' }">
+        <Table :columns="columns">
+          <Heading v-if="headerSlotKnob" slot="header" :size="2">{{heading}}</Heading>
+          <tr v-for="(row, index) in content" :key="index">
+            <td v-for="(obj, index) in row" :key="index">
+              <span :style="{whiteSpace: 'nowrap'}">{{ obj }}</span>
+            </td>
+          </tr>
+        </Table>
+      </div>
+      `,
+      props: {
+        headerSlotKnob: {
+          type: Boolean,
+          default: boolean('Header', false, 'Slots')
+        }
+      },
+      data() {
+        return {
+          heading: 'Heading',
+          columns: {
+            first: {
+              title: 'First column',
+              width: '25%'
+            },
+            second: {
+              title: 'Second column',
+              width: '25%'
+            },
+            third: {
+              title: 'Third column',
+              width: '25%'
+            },
+            fourth: {
+              title: 'Fourth column',
+              width: '25%'
+            },
+            fifth: {
+              title: 'Fifth column',
+              width: '25%'
+            }
+          },
+          content: [
+            {
+              first: 'Row 1, cell 1',
+              second: 'Row 1, cell 2',
+              third: 'Row 1, cell 3',
+              fourth: 'Row 1, cell 4',
+              fifth: 'Row 1, cell 5'
+            },
+            {
+              first: 'Row 2, cell 1',
+              second: 'Row 2, cell 2',
+              third: 'Row 2, cell 3',
+              fourth: 'Row 2, cell 4',
+              fifth: 'Row 2, cell 5'
+            },
+            {
+              first: 'Row 3, cell 1',
+              second: 'Row 3, cell 2',
+              third: 'Row 3, cell 3',
+              fourth: 'Row 3, cell 4',
+              fifth: 'Row 3, cell 5'
+            },
+            {
+              first: 'Row 4, cell 1',
+              second: 'Row 4, cell 2',
+              third: 'Row 4, cell 3',
+              fourth: 'Row 4, cell 4',
+              fifth: 'Row 4, cell 5'
+            }
+          ]
+        };
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={Table} />

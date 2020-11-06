@@ -1,0 +1,131 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { radios, boolean, text, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import icons from '@/assets/graphics/icons';
+import Button from './Button.vue';
+
+<Meta title='Atoms/Buttons/Button' component={Button} parameters={{ }} />
+
+<Title of={Button} />
+
+> *This component is categorized as an atom.*
+
+## Description
+<Description of={Button} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { Button },
+      template: `
+        <Button
+          @click="clickHandler"
+          :element="elementKnob"
+          :type="type"
+          :disabled="disabledKnob"
+          :loading="loadingKnob"
+          :warning="warningKnob"
+        >
+          <Icon :slot="iconSlotKnob" v-if="iconKnob" :name="iconKnob" />
+          {{ labelKnob }}
+        </Button>
+      `,
+      methods: {
+        clickHandler: action('Click button')
+      },
+      computed: {
+        type() {
+          return this.typeValueKnob === 'blue' ? undefined : this.typeValueKnob;
+        }
+      },
+      props: {
+        labelKnob: {
+          type: String,
+          default: text('Label', 'Button')
+        },
+        elementKnob: {
+          type: String,
+          default: radios('Element', {
+            Link: 'a',
+            Button: 'button'
+          }, 'a')
+        },
+        typeValueKnob: {
+          type: String,
+          default: radios('Type', {
+            Blue: 'blue',
+            Outlined: 'outlined',
+            Transparent: 'transparent'
+          }, 'blue')
+        },
+        iconKnob: {
+          type: [String, null],
+          default: select('Icon', [undefined, ...Object.keys(icons)], null)
+        },
+        iconSlotKnob: {
+          type: [String, null],
+          default: select('Icon slot', {
+            Prefix: 'prefix',
+            Suffix: 'suffix'
+          }, 'prefix')
+        },
+        disabledKnob: {
+          type: Boolean,
+          default: boolean('Disabled', false)
+        },
+        loadingKnob: {
+          type: Boolean,
+          default: boolean('Loading', false)
+        },
+        warningKnob: {
+          type: Boolean,
+          default: boolean('Warning', false)
+        }
+      }
+    }}
+  </Story>
+</Canvas>
+
+### Group
+<Canvas>
+  <Story name='Group'>
+    {{
+      components: { Button },
+      template: `
+        <div>
+          <Button
+            v-for="({ type, label }, index) in group"
+            :key="index"
+            :type="type"
+          >
+            {{ label }}
+          </Button>
+        </div>
+      `,
+      data() {
+        return {
+          group: [
+            {
+              type: undefined,
+              label: 'Blue'
+            },
+            {
+              type: 'outlined',
+              label: 'Outlined'
+            },
+            {
+              type: 'transparent',
+              label: 'Transparent'
+            }
+          ]
+        };
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={Button} />

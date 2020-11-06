@@ -1,0 +1,49 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { radios, text } from '@storybook/addon-knobs';
+import FormNote from './FormNote.vue';
+
+<Meta title='Atoms/FormNote' component={FormNote} parameters={{ }} />
+
+<Title of={FormNote} />
+
+> *This component is categorized as an atom.*
+
+## Description
+<Description of={FormNote} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { FormNote },
+      template: `
+        <FormNote :type="typeKnob">
+          {{ noteKnob }}
+        </FormNote>
+      `,
+      props: {
+        noteKnob: {
+          type: String,
+          default: text('Label', 'An error occurred, please try again later.')
+        },
+        typeKnob: {
+          type: String,
+          default: radios(
+            'Type',
+            {
+              Neutral: 'neutral',
+              Error: 'error',
+              Success: 'success'
+            },
+            'neutral'
+          )
+        }
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={FormNote} />

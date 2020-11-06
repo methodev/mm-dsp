@@ -1,0 +1,54 @@
+// ===================================================|
+// General: FONT FACES
+
+// -------------------------| Variables
+$fonts-dir: '../../fonts';
+
+$font-faces: (
+  // Acari Sans
+  // License: SIL OPEN FONT LICENSE ( FREE )
+  // https://localfonts.eu/shop/cyrillic-script/bulgarian/acari-sans/
+  'acari-sans':
+    (
+      'family': (
+        'light': map-get($swatches-typo-font-weights, 'font-weight-light'),
+        'regular': map-get($swatches-typo-font-weights, 'font-weight-regular'),
+        'medium': map-get($swatches-typo-font-weights, 'font-weight-medium'),
+        'semibold': map-get($swatches-typo-font-weights, 'font-weight-semibold'),
+        'bold': map-get($swatches-typo-font-weights, 'font-weight-bold')
+      ),
+      'italic': true
+    )
+);
+
+// -------------------------| Mixins
+@mixin font-face($font-name, $style-name, $weight, $style: 'normal') {
+  $style-name: if($style == 'italic', '#{$style-name}italic', '#{$style-name}');
+  $path: '#{$fonts-dir}/#{$font-name}/#{$font-name}-#{$style-name}';
+
+  @font-face {
+    font-family: '#{$font-name}';
+    font-style: unquote($style);
+    font-weight: $weight;
+    src: url('#{$path}.woff2') format('woff2'),
+      url('#{$path}.woff') format('woff');
+  }
+}
+
+// -------------------------| Definitions
+@for $f from 1 through length($font-faces) {
+  $font-name: nth(nth($font-faces, $f), 1);
+  $font-data: map-get($font-faces, $font-name);
+  $font-styles: map-get($font-data, 'family');
+
+  @for $s from 1 through length($font-styles) {
+    $style-name: nth(nth($font-styles, $s), 1);
+    $weight: map-get($font-styles, $style-name);
+
+    @include font-face($font-name, $style-name, $weight);
+
+    @if map-get($font-data, 'italic') == true {
+      @include font-face($font-name, $style-name, $weight, 'italic');
+    }
+  }
+}

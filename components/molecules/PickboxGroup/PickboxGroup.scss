@@ -1,0 +1,34 @@
+// ===================================================|
+// Molecules: PICKBOX GROUP
+
+// -------------------------| Root
+.root {
+  //
+}
+
+// -------------------------| Display
+.block {
+  .pickbox {
+    display: block;
+
+    > div {
+      display: block;
+    }
+
+    label {
+      @include padding-v(map-get($roles-spaces, 'atoms'));
+
+      display: flex;
+    }
+  }
+}
+
+.inline {
+  .pickbox {
+    display: inline;
+
+    label {
+      @include padding-h(map-get($roles-spaces, 'atoms'));
+    }
+  }
+}

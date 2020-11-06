@@ -1,0 +1,157 @@
+// ===================================================|
+// Molecules: SELECTIVE LIST
+
+// -------------------------| Variables
+$item-offset: map-get($roles-spaces, 'selective-list');
+$separator: map-get($roles-borders-underlines, 'separator');
+$current-bgr: map-get($roles-colors-states, 'current');
+$selected-bgr: map-get($roles-colors-states, 'selected');
+
+$contentless-info-trigger-dimensions: 18px;
+$contentless-popover-overlay-width: 340px;
+
+// -------------------------| Placeholders
+%ph-offset {
+  padding: $item-offset;
+}
+
+// -------------------------| Root
+.root {
+  min-width: 200px;
+  max-width: $roles-size-modal-max-width;
+  max-height: 300px;
+  user-select: none;
+  background-color: map-get($roles-colors-backgrounds, 'selective-list');
+  border-radius: map-get($roles-borders-radiuses, 'selective-list');
+  box-shadow: map-get($roles-box-shadows, 'selective-list');
+}
+
+// -------------------------| Custom content
+.custom {
+  @extend %ph-offset;
+}
+
+.prefix {
+  border-bottom: $separator;
+}
+
+.suffix {
+  border-top: $separator;
+}
+
+// -------------------------| List
+.list {
+  //
+}
+
+// -------------------------| Item
+.item {
+  a {
+    @extend %ph-offset;
+
+    position: relative;
+    display: flex;
+
+    * {
+      pointer-events: none;
+    }
+  }
+
+  &.separated {
+    border-top: $separator;
+  }
+}
+
+// -------------------------| Icon
+.icon {
+  margin-right: map-get($roles-spaces, 'atoms');
+
+  .disabled & {
+    color: currentColor;
+  }
+}
+
+// -------------------------| Checkbox
+.checkbox {
+  @include dimensions-square($roles-size-pickbox);
+
+  margin-right: map-get($roles-spaces, 'atoms');
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+// -------------------------| Label
+.label {
+  flex: 1;
+}
+
+// -------------------------| Item suffix
+.item-suffix {
+  margin-left: $item-offset;
+  color: map-get($roles-colors-texts, 'system');
+}
+
+// -------------------------| Hotkey
+.hotkey {
+  width: 14px;
+  margin-left: $item-offset;
+  color: map-get($roles-colors-texts, 'system');
+  text-align: center;
+}
+
+// -------------------------| States
+.selected {
+  [data-mode='single'] &:not(.current) {
+    background-color: $selected-bgr;
+  }
+}
+
+.disabled {
+  color: map-get($roles-colors-states, 'disabled');
+  pointer-events: none;
+}
+
+.current {
+  background-color: $current-bgr;
+}
+
+// -------------------------| Contentless
+.contentless {
+  @extend %ph-offset;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contentless-text {
+  pointer-events: none;
+}
+
+.contentless-popover {
+  display: flex;
+  align-items: center;
+}
+
+.contentless-info-trigger {
+  @include dimensions-square($contentless-info-trigger-dimensions);
+
+  display: flex;
+
+  i {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    svg {
+      align-self: center;
+      fill: map-get($swatches-colors-silver, 'scol-dark');
+    }
+  }
+}
+
+.contentless-popover-overlay {
+  max-width: $contentless-popover-overlay-width;
+}

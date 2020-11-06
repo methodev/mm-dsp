@@ -1,0 +1,243 @@
+// ===================================================|
+// Atoms: TEXT INPUT
+
+// -------------------------| Variables
+$vertical-offset: 5px;
+$small-label: map-get($roles-typo-font-sizes, 'small');
+$color-normal: map-get($roles-colors-texts, 'system');
+$color-focus: map-get($swatches-colors-blue, 'scol-base');
+$color-error: map-get($roles-colors-states, 'error');
+$color-disabled: map-get($roles-colors-states, 'disabled');
+$transition: all map-get($roles-transitions, 'input') ease-in-out;
+$icon-size: 24px;
+$icon-offset: $icon-size + map-get($roles-spaces, 'atoms');
+
+// -------------------------| Root
+.root,
+.text-input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 220px;
+
+  &.opened * {
+    transition: none;
+  }
+}
+
+// -------------------------| Input area
+.input-area {
+  position: relative;
+}
+
+// -------------------------| Label
+.label {
+  position: absolute;
+  top: $vertical-offset;
+  left: 0;
+  color: $color-normal;
+  cursor: text;
+  user-select: none;
+  transition: $transition;
+
+  .filled &,
+  .element:focus ~ &,
+  .focused &,
+  .opened & {
+    top: -20px;
+    font-size: $small-label;
+    cursor: default;
+
+    &.static-placeholder {
+      display: none;
+    }
+  }
+}
+
+// -------------------------| Element
+.element {
+  box-sizing: content-box;
+  width: 100%;
+  padding: $vertical-offset 0;
+  background-color: transparent;
+  transition: $transition;
+
+  ~ u {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    height: 0;
+    border-bottom: map-get($roles-borders-underlines, 'text-input');
+    transition: $transition;
+  }
+
+  &:focus,
+  .opened &,
+  .focused & {
+    color: $color-focus;
+
+    &[type='search'] {
+      width: calc(100% - #{$icon-offset});
+      padding-left: $icon-offset;
+    }
+
+    ~ u {
+      border-bottom-color: $color-focus;
+      border-bottom-width: 2px;
+    }
+
+    ~ a svg {
+      fill: $color-focus;
+    }
+  }
+
+  .filled & {
+    width: calc(100% - #{$icon-offset});
+
+    &[type='search'] {
+      @include padding-h($icon-offset);
+
+      width: calc(100% - #{$icon-offset * 2});
+    }
+  }
+}
+
+// -------------------------| Magnifier
+.magnifier {
+  @include dimensions-square($icon-size);
+
+  position: absolute;
+  top: $vertical-offset;
+  left: calc(100% - #{$icon-size});
+  transition: $transition;
+
+  svg {
+    fill: $color-normal;
+  }
+
+  .filled &,
+  .element:focus ~ &,
+  .opened & {
+    left: 0;
+  }
+
+  .element:focus ~ & svg,
+  .opened & svg {
+    fill: $color-focus;
+  }
+}
+
+// -------------------------| X button
+.x-button {
+  position: absolute;
+  top: $vertical-offset;
+  right: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: $transition;
+
+  .filled & {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  i {
+    padding: 4px;
+  }
+
+  &:hover {
+    svg {
+      fill: $color-focus;
+    }
+  }
+}
+
+// -------------------------| Bottom
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  color: map-get($roles-colors-texts, 'system');
+  white-space: nowrap;
+  user-select: none;
+  transition: $transition;
+}
+
+// -------------------------| System note
+.system-note {
+  position: relative;
+  flex: 1;
+
+  i {
+    @include dimensions-square(12px);
+
+    position: absolute;
+    top: 50%;
+    margin-left: map-get($roles-spaces, 'atoms') / 2;
+    transform: translate(0, -50%);
+  }
+}
+
+// -------------------------| Counter
+.counter {
+  width: 80px;
+  margin-left: map-get($roles-spaces, 'atoms');
+  text-align: right;
+}
+
+// -------------------------| Footless
+.footless {
+  .bottom {
+    display: none;
+  }
+
+  u {
+    visibility: hidden;
+  }
+}
+
+// -------------------------| States
+.invalid {
+  .element:not(:focus) ~ u,
+  .wrapper:not(.focus) ~ u,
+  .root:not(.opened) u,
+  .text-input:not(.opened) u {
+    border-bottom-color: $color-error;
+  }
+
+  .label,
+  .system-note {
+    color: $color-error;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  user-select: none;
+
+  svg {
+    display: none;
+  }
+
+  .element ~ u,
+  .wrapper ~ u {
+    border-bottom-color: $color-disabled;
+  }
+
+  .element,
+  .label {
+    color: $color-disabled;
+  }
+
+  .bottom,
+  .x-button {
+    opacity: 0;
+  }
+}

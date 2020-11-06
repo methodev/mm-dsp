@@ -1,0 +1,54 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { text, radios, select } from '@storybook/addon-knobs';
+import { mainOf, idsOf } from '@/utils/ui-handlers';
+import { types } from './characteristics';
+import Heading from './Heading.vue';
+/**
+ * Definitions
+ */
+const elements = {
+  '<h1>': '1',
+  '<h2>': '2',
+  '<h3>': '3',
+  '<h4>': '4',
+  '<h5>': '5',
+  '<h6>': '6'
+};
+
+<Meta title='Atoms/Heading' component={Heading} parameters={{ }} />
+
+<Title of={Heading} />
+
+> *This component is categorized as an atom.*
+
+## Description
+<Description of={Heading} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { Heading },
+      template: `<Heading :size="parseInt(sizeKnob)" :type="typeKnob">{{ headingKnob }}</Heading>`,
+      props: {
+        headingKnob: {
+          type: String,
+          default: text('Heading', 'This is a sample of a heading')
+        },
+        sizeKnob: {
+          type: [Number, String],
+          default: radios('Element', elements, '1')
+        },
+        typeKnob: {
+          type: String,
+          default: select('Type', idsOf(types), mainOf(types))
+        }
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={Heading} />

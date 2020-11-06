@@ -1,0 +1,53 @@
+// ===================================================|
+// Molecules: TABLE OVERVIEW
+
+// -------------------------| Variables
+$link-normal: map-get-deep($roles-colors-links, 'link-blue', 'link');
+$link-hover: map-get-deep($roles-colors-links, 'link-blue', 'hover');
+$link-active: map-get-deep($roles-colors-links, 'link-blue', 'active');
+$name-font-weight: map-get($swatches-typo-font-weights, 'font-weight-medium');
+
+// -------------------------| Root
+.root {
+  max-width: 100%;
+
+  td:first-child {
+    font-weight: $name-font-weight;
+  }
+
+  &:not(.readonly) tr:not([data-static]):hover td {
+    cursor: pointer;
+  }
+}
+
+// -------------------------| Columns
+/* stylelint-disable */
+.status,
+.display_status {
+  white-space: nowrap;
+}
+/* stylelint-enable */
+
+// -------------------------| Table link
+.table-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-decoration: none;
+  transition: all map-get($roles-transitions, 'button') ease-in-out;
+
+  i {
+    flex-shrink: 0;
+    margin-left: map-get($roles-spaces, 'atoms') / 2;
+    color: $link-normal;
+  }
+
+  svg {
+    fill: currentColor;
+  }
+
+  > span {
+    line-height: normal;
+  }
+}

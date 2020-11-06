@@ -1,0 +1,67 @@
+// ===================================================|
+// Atoms: TEXT AREA
+
+// -------------------------| Variables
+$color-focus: map-get($swatches-colors-blue, 'scol-base');
+$color-error: map-get($roles-colors-states, 'error');
+$color-disabled: map-get($roles-colors-states, 'disabled');
+$small-label: map-get($roles-typo-font-sizes, 'small');
+
+$element-height: 24px;
+
+// -------------------------| Root
+.root {
+  @include padding-v($element-height);
+
+  //display: block;
+}
+
+// -------------------------| Wrapper
+.wrapper {
+  position: relative;
+  display: flex;
+  padding: 5px 0;
+
+  ~ u {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    height: 0;
+    border-bottom: map-get($roles-borders-underlines, 'text-input');
+    transition: all map-get($roles-transitions, 'input') ease-in-out;
+  }
+}
+
+// -------------------------| Element
+.element {
+  width: 100%;
+  height: $element-height;
+  min-height: $element-height;
+  max-height: 120px;
+  padding: 0;
+  line-height: $element-height;
+  resize: none;
+}
+
+// -------------------------| X Button
+.x-button {
+  top: 0;
+}
+
+// -------------------------| States
+.focused {
+  color: $color-focus;
+
+  > u {
+    border-bottom-color: $color-focus;
+    border-bottom-width: 2px;
+  }
+
+  label {
+    top: -20px;
+    font-size: $small-label;
+    cursor: default;
+  }
+}

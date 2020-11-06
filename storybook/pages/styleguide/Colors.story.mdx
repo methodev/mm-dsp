@@ -1,0 +1,26 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import swatches_colors from '@/defs/ui/swatches/swatches-colors';
+
+<Meta title="Styleguide/Colors" />
+
+# Colors
+
+<ColorPalette>
+  {
+    Object.keys(swatches_colors).map((item, index) => {
+      const group = swatches_colors[item];
+      const names = Object.keys(group.value).map((item) => group.value[item].name);
+      const swatches = {};
+      Object.keys(group.value).forEach((item) => swatches[group.value[item].name] = group.value[item].value);
+      return (
+        <ColorItem
+          key={index}
+          title={group.name}
+          // subtitle={names.join(', ')}
+          colors={swatches}
+        />
+      )
+    })
+  }
+</ColorPalette>
+

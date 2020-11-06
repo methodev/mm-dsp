@@ -1,0 +1,13 @@
+// ===================================================|
+// BASE
+
+// -------------------------| Font size
+/* stylelint-disable */
+@import '_base.js';
+/* stylelint-enable */
+
+@function role($map, $value) {
+  $r-map: map-get($value, 'map');
+  $r-value: map-get($value, 'value');
+  @return map-get($r-map, $r-value);
+}

@@ -1,0 +1,61 @@
+// ===================================================|
+// PICK BOX
+
+// -------------------------| Variables
+$size: $roles-size-pickbox;
+$disabled: map-get($roles-colors-states, 'disabled');
+
+// -------------------------| Root
+.root {
+  position: relative;
+  line-height: $size;
+}
+
+// -------------------------| Inner
+.inner {
+  display: inline-flex;
+}
+
+// -------------------------| Stage
+.stage {
+  position: relative;
+  display: inline-flex;
+  min-width: $size;
+  min-height: $size;
+  cursor: pointer;
+}
+
+// -------------------------| Custom input
+.custom-input {
+  @include dimensions-square($size);
+
+  display: block;
+  flex-shrink: 0;
+  overflow: hidden;
+  fill: currentColor;
+
+  .inner:hover & svg {
+    fill: map-get-deep($roles-colors-links, 'link-black', 'hover');
+  }
+}
+
+// -------------------------| Label
+.label {
+  display: block;
+  padding-left: map-get($roles-spaces, 'atoms');
+  line-height: $size;
+  user-select: none;
+}
+
+// -------------------------| States
+
+.disabled {
+  color: $disabled;
+  pointer-events: none;
+
+  .custom-input {
+    svg {
+      fill: $disabled;
+    }
+  }
+}

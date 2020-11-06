@@ -1,0 +1,33 @@
+<div
+  :class="[
+    $stylePickbox.root,
+    $styleCustom.root, {
+      [$stylePickbox.disabled]: $attrs.disabled,
+      [$styleCustom.selected]: $styleCustom.selected && $attrs.value
+    }]"
+>
+  <div
+    :class="$stylePickbox.inner"
+    @mouseenter="hover = true"
+    @mouseleave="hover = false"
+  >
+    <input
+      :type="type"
+      v-bind="$attrs"
+      v-on="listeners"
+      :checked="$attrs.value"
+    />
+    <label :class="$stylePickbox.stage" :for="$attrs.id">
+      <Icon
+        :name="icon"
+        :class="[$stylePickbox.customInput, $styleCustom.customInput]"
+      />
+      <span
+        v-if="$slots.default && $slots.default[0].text !== ''"
+        :class="$stylePickbox.label"
+      >
+        <slot />
+      </span>
+    </label>
+  </div>
+</div>

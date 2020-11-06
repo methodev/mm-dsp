@@ -1,0 +1,40 @@
+// ===================================================|
+// Molecules: TAG GROUP
+
+// -------------------------| Variables
+$buffer-between-items: map-get($roles-spaces, 'tag') * 2;
+
+// -------------------------| Root
+.root {
+  @include margin-h(-$buffer-between-items / 2);
+
+  display: flex;
+  flex-wrap: wrap;
+  min-height: $tag-height;
+}
+
+// -------------------------| Single tag, Optional item
+.single-tag,
+.optional-item {
+  max-width: calc(
+    100% - #{$buffer-between-items - 1}
+  ); // - 1 fixes case where only one tag is unnecessarily trimmed
+
+  margin: $buffer-between-items / 2;
+}
+
+.optional-item {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-height: $tag-height;
+
+  :global {
+    .v-popover {
+      &,
+      * {
+        width: 100%;
+      }
+    }
+  }
+}

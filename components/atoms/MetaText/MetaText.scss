@@ -1,0 +1,13 @@
+// ===================================================|
+// Atoms: META TEXT
+
+// -------------------------| Variables
+$font-size: map-get($roles-typo-font-sizes, 'small');
+$text-color: map-get($roles-colors-texts, 'system');
+
+// -------------------------| Root
+.root {
+  margin: 0;
+  font-size: $font-size;
+  color: $text-color;
+}

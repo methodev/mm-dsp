@@ -1,0 +1,41 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { number } from '@storybook/addon-knobs';
+import WhiteBoard from './WhiteBoard.vue';
+
+<Meta title='Boards/WhiteBoard' component={WhiteBoard} parameters={{ }} />
+
+<Title of={WhiteBoard} />
+
+> *This component is categorized as a board.*
+
+## Description
+<Description of={WhiteBoard} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { WhiteBoard },
+      template: `
+        <WhiteBoard :style="{width: widthKnob + 'px', height: heightKnob + 'px'}">
+          This is just a white board.
+        </WhiteBoard>
+      `,
+      props: {
+        widthKnob: {
+          type: Number,
+          default: number('Width (px)', 300)
+        },
+        heightKnob: {
+          type: Number,
+          default: number('Height (px)', 200)
+        }
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={WhiteBoard} />

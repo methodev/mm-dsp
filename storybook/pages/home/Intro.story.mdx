@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import mmLogo from '../../assets/logos/mm';
+import storybookLogo from '../../assets/logos/storybook';
+
+<Meta title="Home/Intro" />
+
+<section style={{
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1,
+  width: '100%',
+  maxWidth: '600px',
+  margin: '0 auto',
+  textAlign: 'center'
+}}>
+  <div style={{
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}>
+    <div style={{ width: '100%' }}>
+      <a href="https://metodiev.dev" target="_blank" style={{ display: 'inline-block', width: '50%', margin: '2em auto' }}>
+        <img
+          style={{ width: '100%' }}
+          src={ mmLogo }
+        />
+      </a>
+      <div style={{ fontFamily: 'acari-sans', fontSize: '14px', color: '#818181' }}>
+        UI styleguide &amp; components catalogue
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div style={{ fontFamily: 'acari-sans', fontSize: '12px', color: '#818181' }}>
+      Based on
+    </div>
+    <a href="https://storybook.js.org" target="_blank" style={{ display: 'inline-block', width: '25%', margin: '1em auto' }}>
+      <img
+        style={{ width: '100%' }}
+        src={ storybookLogo }
+      />
+    </a>
+  </div>
+</section>

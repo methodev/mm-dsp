@@ -1,0 +1,53 @@
+// ===================================================|
+// Atoms: LOADER
+
+// -------------------------| Root
+.root {
+  display: inline-flex;
+  cursor: wait;
+}
+
+// -------------------------| Loader
+.loader {
+  display: flex;
+  font-size: 0;
+  line-height: 0;
+  white-space: nowrap;
+
+  > * {
+    display: block !important;
+  }
+}
+
+// -------------------------| Stretched
+.stretched {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: map-get($roles-spaces, 'app');
+}
+
+// -------------------------| Overall
+.overall {
+  @include dimensions-square(100%);
+  @include position-stretched();
+
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.light {
+    background-color: map-get($roles-colors-backgrounds, 'curtain');
+  }
+}
+
+// -------------------------| Modes
+.light {
+  //
+}
+
+.dark {
+  //
+}

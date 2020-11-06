@@ -1,0 +1,33 @@
+import { Meta, Typeset } from '@storybook/addon-docs/blocks';
+import swatches_typography from '@/defs/ui/swatches/swatches-typography';
+
+<Meta title="Styleguide/Typography" />
+
+# Typography
+
+## Font families
+<div>
+  {
+    Object.keys(swatches_typography['font-families'].value).map((family, index) => (
+      <div key={index}>
+        <label>Name:</label>&nbsp;
+        <strong>{ swatches_typography['font-families'].value[family].name }</strong>
+      </div>
+    ))
+  }
+</div>
+
+## Font sizes
+<Typeset fontSizes={Object.keys(swatches_typography['font-sizes'].value).map((size) => swatches_typography['font-sizes'].value[size].value)} sampleText='The quick brown fox jumps over the lazy dog.' />
+
+## Font weights
+<div>
+  {
+    Object.keys(swatches_typography['font-weights'].value).map((weight, index) => (
+      <span key={index} style={{ paddingRight: '16px', fontWeight: swatches_typography['font-weights'].value[weight].value }}>
+        { swatches_typography['font-weights'].value[weight].name }
+      </span>
+    ))
+  }
+</div>
+

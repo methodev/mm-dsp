@@ -1,0 +1,44 @@
+// ===================================================|
+// Global: MODAL
+
+// -------------------------| Varibles
+$offset: map-get($roles-spaces, 'modal');
+
+// -------------------------| Overlay
+.v--modal-overlay {
+  z-index: z(modal) !important;
+}
+
+.v--modal-background-click {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.v--modal-overlay,
+.v--modal-background-click {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+.v--modal-top-right {
+  display: none !important;
+}
+
+// -------------------------| Box
+.v--modal-box {
+  top: auto !important;
+  left: auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw !important;
+  height: 100vh !important;
+  padding: $offset;
+  margin-bottom: 0 !important;
+  pointer-events: none;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}

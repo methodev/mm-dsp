@@ -1,0 +1,39 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { text, select } from '@storybook/addon-knobs';
+import { mainOf, idsOf } from '@/utils/ui-handlers';
+import { kinds } from './characteristics';
+import Badge from './Badge.vue';
+
+<Meta title='Atoms/Badge' component={Badge} parameters={{ }} />
+
+<Title of={Badge} />
+
+> *This component is categorized as an atom.*
+
+## Description
+<Description of={Badge} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { Badge },
+      template: '<Badge :label="labelKnob" :kind="kindKnob" />',
+      props: {
+        labelKnob: {
+          type: String,
+          default: text('Label', 'Beta')
+        },
+        kindKnob: {
+          type: String,
+          default: select('Kind', idsOf(kinds), mainOf(kinds))
+        }
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={Badge} />

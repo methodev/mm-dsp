@@ -1,0 +1,34 @@
+// ===================================================|
+// Atoms: SYSTEM TEXT
+
+// -------------------------| Variables
+$text-color: map-get($roles-colors-texts, 'system');
+
+// -------------------------| Root
+.root {
+  display: inline-flex;
+  align-items: center;
+  color: $text-color;
+  user-select: none;
+}
+
+// -------------------------| Suffix
+.suffix {
+  margin-left: 5px;
+  line-height: 0;
+}
+
+// -------------------------| block
+.block {
+  display: flex;
+  margin-top: map-get($roles-spaces, 'app');
+}
+
+// -------------------------| Sizes
+.normal {
+  //
+}
+
+.small {
+  font-size: map-get($roles-typo-font-sizes, 'small');
+}

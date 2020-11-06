@@ -1,0 +1,81 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { boolean, radios } from '@storybook/addon-knobs';
+import Loader from './Loader.vue';
+
+<Meta title='Atoms/Loader' component={Loader} parameters={{ }} />
+
+<Title of={Loader} />
+
+> *This component is categorized as an atom.*
+
+## Description
+<Description of={Loader} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { Loader },
+      template: `
+        <div :style="containerStyles">
+          <Loader :loading="true" :mode="modeKnob" :size="sizeKnob" :stretched="stretchedKnob" :overall="overallKnob" />
+        </div>
+      `,
+      computed: {
+        containerStyles() {
+          return {
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            flex: 1,
+            width: '100%',
+            padding: '1.5rem',
+            backgroundColor: this.modeKnob === 'light' ? '#2d4ea2' : 'transparent'
+          };
+        }
+      },
+      props: {
+        sizeKnob: {
+          type: String,
+          default: radios(
+            'Size',
+            {
+              Small: 'small',
+              Big: 'big'
+            },
+            'small'
+          )
+        },
+        modeKnob: {
+          type: String,
+          default: radios(
+            'Mode',
+            {
+              Dark: 'dark',
+              Light: 'light'
+            },
+            'dark'
+          )
+        },
+        stretchedKnob: {
+          type: Boolean,
+          default: boolean('Stretched', false)
+        },
+        overallKnob: {
+          type: Boolean,
+          default: boolean('Overall', false)
+        }
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={Loader} />

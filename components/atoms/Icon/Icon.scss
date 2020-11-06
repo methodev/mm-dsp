@@ -1,0 +1,40 @@
+// ===================================================|
+// Atoms: ICON
+
+// -------------------------| Imports
+/* stylelint-disable */
+@import './characteristics.js';
+/* stylelint-enable */
+
+// -------------------------| Root
+.root {
+  display: inline-block;
+  line-height: 0;
+
+  svg {
+    @include dimensions-square(100%);
+
+    fill: currentColor;
+    transition: all map-get($roles-transitions, 'button') ease-in-out;
+  }
+}
+
+// -------------------------| Kinds
+@for $kind from 1 through length($kinds) {
+  $kind-name: nth(nth($kinds, $kind), 1);
+  $states: map-get(map-get($kinds, $kind-name), 'colors');
+
+  .#{$kind-name} {
+    color: map-get($states, 'normal');
+  }
+}
+
+// -------------------------| Sizes
+@for $s from 1 through length($sizes) {
+  $name: nth(nth($sizes, $s), 1);
+  $value: map-get(map-get($sizes, $name), 'value');
+
+  .s#{$name} {
+    @include dimensions-square($value);
+  }
+}

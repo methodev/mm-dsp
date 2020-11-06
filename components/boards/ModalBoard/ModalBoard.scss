@@ -1,0 +1,76 @@
+// ===================================================|
+// Boards: MODAL BOARD
+
+// -------------------------| Variables
+$dialog-bgr: map-get($roles-colors-backgrounds, 'modal');
+$offset: map-get($roles-spaces, 'modal');
+
+// -------------------------| Dialog
+.dialog {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: $roles-size-modal-max-width;
+  max-height: calc(100vh - #{$offset * 2});
+  pointer-events: all;
+  background-color: $dialog-bgr !important;
+  border-radius: map-get($roles-borders-radiuses, 'modal') !important;
+  box-shadow: map-get($roles-box-shadows, 'modal') !important;
+
+  &.stretched {
+    width: 100%;
+  }
+}
+
+// -------------------------| Head
+.head {
+  display: flex;
+  padding: $offset;
+}
+
+// -------------------------| Title
+.title {
+  //
+}
+
+// -------------------------| Meta
+.meta {
+  flex: 1;
+  margin-left: $offset;
+}
+
+// -------------------------| Body
+.body {
+  @include padding-h($offset);
+
+  display: block;
+  flex: 1;
+  overflow-y: auto;
+
+  &:first-child {
+    padding-top: $offset;
+  }
+
+  &:last-child {
+    padding-bottom: $offset;
+  }
+}
+
+// -------------------------| Foot
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: $offset;
+
+  > *:first-child:not(:last-child) {
+    flex: 1;
+    margin-right: map-get($roles-spaces, 'atoms');
+  }
+
+  > *:last-child {
+    display: flex;
+    align-items: center;
+    justify-self: flex-end;
+  }
+}

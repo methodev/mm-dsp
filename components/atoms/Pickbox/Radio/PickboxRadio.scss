@@ -1,0 +1,27 @@
+// ===================================================|
+// RADIO
+
+// -------------------------| Variables
+$border-radius: map-get($roles-borders-radiuses, 'radio');
+
+// -------------------------| Root
+.root {
+  //
+}
+
+// -------------------------| Custom input
+.custom-input {
+  span {
+    border: map-get($roles-borders-wrappers, 'radio');
+  }
+
+  &,
+  span {
+    border-radius: $border-radius;
+  }
+}
+
+// -------------------------| Selected
+.selected {
+  pointer-events: none;
+}

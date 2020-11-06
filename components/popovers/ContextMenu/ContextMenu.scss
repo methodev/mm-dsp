@@ -1,0 +1,14 @@
+// ===================================================|
+// Overlays: CONTEXT MENU
+
+// -------------------------| Root
+.root {
+  //
+}
+
+// -------------------------| Overlay
+.overlay {
+  &:not(.constrained) {
+    width: auto !important;
+  }
+}

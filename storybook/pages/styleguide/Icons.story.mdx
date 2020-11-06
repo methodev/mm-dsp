@@ -1,0 +1,26 @@
+import { Anchor, Meta, IconGallery, IconItem } from '@storybook/addon-docs/blocks';
+import { groups } from '@/assets/graphics/icons';
+import { camelCase } from 'lodash';
+import InlineSVG from 'svg-inline-react';
+
+<Meta title="Styleguide/Icons" />
+
+# Icons
+
+<div>
+  {
+    groups.map(({ name, icons }, index) => (
+      <div key={index}>
+        <Anchor storyId={camelCase(name)} /><h2 id={camelCase(name)}>{name}</h2>
+        <IconGallery>
+          {
+            icons.map((icon) => {
+              const ico = require(`!!svg-inline-loader!../../../assets/graphics/icons/${icon}.svg`);
+              return <IconItem key={icon} name={icon}><InlineSVG className='svg-icon' src={ico} /></IconItem>;
+            })
+          }
+        </IconGallery>
+      </div>
+    ))
+  }
+</div>

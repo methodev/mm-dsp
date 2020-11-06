@@ -1,0 +1,61 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { text, radios } from '@storybook/addon-knobs';
+import Hyperlink from './Hyperlink.vue';
+/**
+ * Definitions
+ */
+const types = {
+  Black: 'black',
+  Blue: 'blue',
+  Gray: 'gray'
+};
+
+<Meta title='Atoms/Hyperlink' component={Hyperlink} parameters={{ }} />
+
+<Title of={Hyperlink} />
+
+> *This component is categorized as an atom.*
+
+## Description
+<Description of={Hyperlink} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { Hyperlink },
+      template: `
+        <Hyperlink
+          :type="type"
+          :href="linkKnob"
+        >
+          {{ labelKnob }}
+        </Hyperlink>
+      `,
+      computed: {
+        type() {
+          return this.typeValueKnob === 'black' ? undefined : this.typeValueKnob;
+        }
+      },
+      props: {
+        labelKnob: {
+          type: String,
+          default: text('Label', 'This is just a link.')
+        },
+        typeValueKnob: {
+          type: String,
+          default: radios('Type', types, 'black')
+        },
+        linkKnob: {
+          type: String,
+          default: text('Link', 'https://google.com')
+        }
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={Hyperlink} />

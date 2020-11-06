@@ -1,0 +1,59 @@
+// ===================================================|
+// Atoms: ICON BUTTON
+
+// -------------------------| Imports
+/* stylelint-disable */
+@import '../../Icon/characteristics.js';
+/* stylelint-enable */
+
+// -------------------------| Root
+.root {
+  cursor: pointer;
+
+  + .root {
+    margin-left: map-get($roles-spaces, 'atoms');
+  }
+}
+
+// -------------------------| Kinds
+@for $kind from 1 through length($kinds) {
+  $kind-name: nth(nth($kinds, $kind), 1);
+  $states: map-get(map-get($kinds, $kind-name), 'colors');
+
+  @for $state from 1 through length($states) {
+    $state-name: nth(nth($states, $state), 1);
+    $state-value: map-get($states, $state-name);
+
+    @if $state-name == 'normal' {
+      .#{$kind-name} i {
+        color: $state-value;
+      }
+    } @else {
+      .#{$kind-name}:#{$state-name} i {
+        color: $state-value;
+      }
+    }
+  }
+}
+
+// -------------------------| Sizes
+@for $s from 1 through length($sizes) {
+  $name: nth(nth($sizes, $s), 1);
+  $value: map-get(map-get($sizes, $name), 'value');
+
+  .s#{$name} {
+    @include dimensions-square($value);
+
+    i {
+      @include dimensions-square(100%);
+    }
+  }
+}
+
+// -------------------------| States
+@at-root .root {
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}

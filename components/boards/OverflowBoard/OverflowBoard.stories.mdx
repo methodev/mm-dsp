@@ -1,0 +1,60 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { text } from '@storybook/addon-knobs';
+import { LoremIpsum } from 'lorem-ipsum';
+import OverflowBoard from './OverflowBoard.vue';
+/**
+ * Definitions
+ */
+const lorem = new LoremIpsum({
+  sentencesPerParagraph: {
+    max: 8,
+    min: 4
+  },
+  wordsPerSentence: {
+    max: 16,
+    min: 4
+  }
+});
+const content = lorem.generateParagraphs(7);
+
+<Meta title='Boards/OverflowBoard' component={OverflowBoard} parameters={{ }} />
+
+<Title of={OverflowBoard} />
+
+> *This component is categorized as a board.*
+
+## Description
+<Description of={OverflowBoard} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { OverflowBoard },
+      template: `
+        <OverflowBoard :style="styles">
+          {{ contentKnob }}
+        </OverflowBoard>
+      `,
+      props: {
+        contentKnob: {
+          type: String,
+          default: text('Text', content)
+        }
+      },
+      data() {
+        return {
+          styles: {
+            width: '300px',
+            height: '200px'
+          }
+        };
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={OverflowBoard} />

@@ -1,0 +1,17 @@
+// ===================================================|
+// CHECKBOX
+
+// -------------------------| Variables
+$gap: 2px;
+
+// -------------------------| Root
+.root {
+  //
+}
+
+// -------------------------| Custom input
+.custom-input {
+  span {
+    border: map-get($roles-borders-wrappers, 'checkbox');
+  }
+}

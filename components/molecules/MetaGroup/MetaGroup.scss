@@ -1,0 +1,30 @@
+// ===================================================|
+// Molecules: META GROUP
+
+// -------------------------| Variables
+$meta-item-buffer: map-get($roles-spaces, 'atoms');
+
+// -------------------------| Root
+.root {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// -------------------------| Meta
+.meta {
+  margin: 0 $meta-item-buffer;
+}
+
+// -------------------------| Block
+.block {
+  &,
+  .meta {
+    display: block;
+  }
+
+  .meta {
+    + .meta {
+      margin-top: $meta-item-buffer;
+    }
+  }
+}

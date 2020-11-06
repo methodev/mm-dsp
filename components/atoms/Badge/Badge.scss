@@ -1,0 +1,43 @@
+// ===================================================|
+// Atoms: BADGE
+
+// -------------------------| Imports
+/* stylelint-disable */
+@import './characteristics.js';
+/* stylelint-enable */
+
+// -------------------------| Variables
+$offset: 5px;
+$font-size-default: map-get($roles-typo-font-sizes, 'badge');
+
+// -------------------------| Root
+.root {
+  @util truncate;
+
+  display: inline-block;
+  padding: $offset;
+  font-size: $font-size-default;
+  line-height: 1;
+  user-select: none;
+  border-radius: map-get($roles-borders-radiuses, 'badge');
+
+  + .root {
+    margin-left: map-get($roles-spaces, 'badge');
+  }
+}
+
+// -------------------------| Kinds
+@for $kind from 1 through length($kinds) {
+  $kind-name: nth(nth($kinds, $kind), 1);
+  $states: map-get(map-get($kinds, $kind-name), 'colors');
+  $border: map-get($states, 'border');
+
+  .#{$kind-name} {
+    color: map-get($states, 'text');
+    background-color: map-get($states, 'background');
+
+    @if $border {
+      border: 1px solid $border;
+    }
+  }
+}

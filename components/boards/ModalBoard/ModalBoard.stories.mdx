@@ -1,0 +1,59 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { text } from '@storybook/addon-knobs';
+import { LoremIpsum } from 'lorem-ipsum';
+import ModalBoard from './ModalBoard.vue';
+/**
+ * Definitions
+ */
+const lorem = new LoremIpsum({
+  sentencesPerParagraph: {
+    max: 8,
+    min: 4
+  },
+  wordsPerSentence: {
+    max: 16,
+    min: 4
+  }
+});
+const content = lorem.generateParagraphs(1);
+
+<Meta title='Boards/ModalBoard' component={ModalBoard} parameters={{ }} />
+
+<Title of={ModalBoard} />
+
+> *This component is categorized as a board.*
+
+## Description
+<Description of={ModalBoard} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { ModalBoard },
+      template: `
+        <ModalBoard title="Title of this modal dialog">
+          <template slot="body">
+            <p>
+              {{ contentKnob }}
+            </p>
+          </template>
+          <template slot="foot">
+            <Button @click="$emit('close')">Close</Button>
+          </template>
+        </ModalBoard>
+      `,
+      props: {
+        contentKnob: {
+          type: String,
+          default: text('Text', content)
+        }
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={ModalBoard} />

@@ -1,0 +1,16 @@
+// ===================================================|
+// Boards: WHITE BOARD
+
+// -------------------------| Variables
+$min-size: 100px;
+$offset: map-get($roles-spaces, 'board');
+$border-radius: map-get($roles-borders-radiuses, 'board');
+
+// -------------------------| Root
+.root {
+  min-width: $min-size;
+  padding: $offset;
+  background-color: map-get($roles-colors-backgrounds, 'board');
+  border-radius: $border-radius;
+  box-shadow: map-get($roles-box-shadows, 'board');
+}

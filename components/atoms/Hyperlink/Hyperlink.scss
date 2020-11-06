@@ -1,0 +1,67 @@
+// ===================================================|
+// Atoms: HYPERLINK
+
+// -------------------------| Data
+$link-types: (
+  'black': (
+    'normal': map-get-deep($roles-colors-links, 'link-black', 'link'),
+    'hover': map-get-deep($roles-colors-links, 'link-black', 'hover'),
+    'active': map-get-deep($roles-colors-links, 'link-black', 'active')
+  ),
+  'blue': (
+    'normal': map-get-deep($roles-colors-links, 'link-blue', 'link'),
+    'hover': map-get-deep($roles-colors-links, 'link-blue', 'hover'),
+    'active': map-get-deep($roles-colors-links, 'link-blue', 'active')
+  ),
+  'gray': (
+    'normal': map-get-deep($roles-colors-links, 'link-gray', 'link'),
+    'hover': map-get-deep($roles-colors-links, 'link-gray', 'hover'),
+    'active': map-get-deep($roles-colors-links, 'link-gray', 'active')
+  )
+);
+
+$link-default-type: 'black';
+
+// -------------------------| Mixins
+@mixin link-generator($type) {
+  $state-normal: map-get($type, 'normal');
+  $state-hover: map-get($type, 'hover');
+  $state-active: map-get($type, 'active');
+
+  color: $state-normal;
+
+  &:hover {
+    color: $state-hover;
+  }
+
+  &:active {
+    color: $state-active;
+  }
+}
+
+// -------------------------| Root
+.root {
+  a {
+    text-decoration: underline;
+    transition: all map-get($roles-transitions, 'link') ease-in-out;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  @for $link from 1 through length($link-types) {
+    $name: nth(nth($link-types, $link), 1);
+    $value: map-get($link-types, $name);
+
+    @if $name == $link-default-type {
+      &:not([data-type]) a {
+        @include link-generator($value);
+      }
+    } @else {
+      &[data-type='#{$name}'] a {
+        @include link-generator($value);
+      }
+    }
+  }
+}

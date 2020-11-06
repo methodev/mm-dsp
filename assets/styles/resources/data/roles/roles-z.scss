@@ -1,0 +1,13 @@
+// ===================================================|
+// Roles: Z-INDEXES
+
+// -------------------------| Main layers
+$roles-z-indexes: (
+  modal: (),
+  popover: (),
+  tooltip: ()
+);
+
+// -------------------------| Form elements
+$roles-z-indexes-hidden-inputs: -1;
+$roles-z-indexes-form-element: 1;

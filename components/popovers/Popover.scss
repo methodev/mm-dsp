@@ -1,0 +1,21 @@
+// ===================================================|
+// Overlays: POPOVER
+
+// -------------------------| Root
+.root {
+  //
+}
+
+// -------------------------| Trigger
+.trigger {
+  //
+}
+
+// -------------------------| Overlay
+.overlay {
+  max-width: $roles-size-modal-max-width;
+
+  > * {
+    max-width: none;
+  }
+}

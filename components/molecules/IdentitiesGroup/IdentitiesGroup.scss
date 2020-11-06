@@ -1,0 +1,37 @@
+// ===================================================|
+// Molecules: IDENTITIES GROUP
+
+// -------------------------| Variables
+$group-label-font-size: map-get($roles-typo-font-sizes, 'menu');
+$group-label-line-height: map-get($roles-typo-line-heights, 'menu');
+$group-label-color: map-get($roles-colors-texts, 'system');
+$buffer-between-items: map-get($swatches-spaces, 'space-05');
+$group-wrapper-min-height: 36px;
+
+// -------------------------| Root
+.root {
+  display: flex;
+  align-items: center;
+  min-height: $group-wrapper-min-height;
+}
+
+// -------------------------| Group label
+.group-label {
+  margin-right: $buffer-between-items;
+  font-size: $group-label-font-size;
+  line-height: $group-label-line-height;
+  color: $group-label-color;
+}
+
+// -------------------------| Identities container
+.identities-container {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  margin: -$buffer-between-items / 2;
+}
+
+// -------------------------| Single identity
+.single-identity {
+  margin: $buffer-between-items / 2;
+}

@@ -1,0 +1,40 @@
+import { Title, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { text } from '@storybook/addon-knobs';
+import Avatar from './Avatar.vue';
+
+<Meta title='Atoms/Avatar' component={Avatar} parameters={{ }} />
+
+<Title of={Avatar} />
+
+> *This component is categorized as an atom.*
+
+## Description
+<Description of={Avatar} />
+
+## Stories
+
+### Default
+<Canvas>
+  <Story name='Default'>
+    {{
+      components: { Avatar },
+      template: '<Avatar :src="srcKnob" :alt="altKnob" />',
+      props: {
+        srcKnob: {
+          type: String,
+          default: text(
+            'Source',
+            'https://i.pravatar.cc/150?img=67?u=d41d8cd98f00b2'
+          )
+        },
+        altKnob: {
+          type: String,
+          default: text('Alt text', 'Avatar')
+        }
+      }
+    }}
+  </Story>
+</Canvas>
+
+## I/O
+<ArgsTable of={Avatar} />

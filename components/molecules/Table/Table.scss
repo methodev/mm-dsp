@@ -1,0 +1,73 @@
+// ===================================================|
+// Molecules: TABLE
+
+// -------------------------| Variables
+$offset: map-get($roles-spaces, 'table');
+$th-color: map-get($roles-colors-texts, 'system');
+$th-size: map-get($roles-typo-font-sizes, 'small');
+
+// -------------------------| Root
+.root {
+  padding: 0;
+  overflow: hidden;
+
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 0;
+    border-radius: map-get($roles-borders-radiuses, 'board');
+  }
+
+  th,
+  td {
+    padding: $offset ($offset / 2);
+
+    &:first-child {
+      padding-left: $offset;
+    }
+
+    &:last-child {
+      padding-right: $offset;
+    }
+  }
+
+  th {
+    @util truncate;
+
+    margin-bottom: -1px;
+    font-size: $th-size;
+    font-weight: 400;
+    color: $th-color;
+    text-align: left;
+    white-space: nowrap;
+    background-color: map-get($roles-colors-backgrounds, 'board');
+    border-bottom: map-get($roles-borders-underlines, 'separator');
+  }
+
+  td {
+    word-break: break-word;
+    vertical-align: top;
+    border-bottom: map-get($roles-borders-underlines, 'separator');
+  }
+
+  tr:last-child td {
+    border-bottom: 0;
+  }
+
+  tr:hover td {
+    background-color: map-get($roles-colors-backgrounds, 'graylight');
+  }
+}
+
+// -------------------------| Head
+.head {
+  padding: $offset;
+}
+
+// -------------------------| Footer
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: $offset * 0.4 $offset;
+  border-top: map-get($roles-borders-underlines, 'separator');
+}

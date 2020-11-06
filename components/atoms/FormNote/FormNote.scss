@@ -1,0 +1,29 @@
+// ===================================================|
+// Atoms: FORM NOTE
+
+// -------------------------| Variables
+$font-size: map-get($roles-typo-font-sizes, 'small');
+$line-height: map-get($roles-typo-line-heights, 'form-note');
+$color-neutral: map-get($roles-colors-texts, 'system');
+$color-error: map-get($roles-colors-states, 'error');
+$color-success: map-get($roles-colors-states, 'success');
+
+// -------------------------| Root
+.root {
+  margin: 0;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+// -------------------------| Types
+.neutral {
+  color: $color-neutral;
+}
+
+.error {
+  color: $color-error;
+}
+
+.success {
+  color: $color-success;
+}

@@ -1,0 +1,56 @@
+// ===================================================|
+// Organisms: LOGIN FORM
+
+// -------------------------| Root
+.root {
+  width: 100%;
+  max-width: $roles-size-auth-form;
+}
+
+// -------------------------| Board
+.board {
+  //
+}
+
+// -------------------------| Foot
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: map-get($roles-spaces, 'molecules');
+}
+
+// -------------------------| Note cell
+.note-cell {
+  margin-right: map-get($roles-spaces, 'atoms');
+}
+
+// -------------------------| Button cell
+.button-cell {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+// -------------------------| User field
+.user-field {
+  //
+}
+
+// -------------------------| Pass field
+.pass-field {
+  //
+}
+
+// -------------------------| Button
+.button {
+  //
+}
+
+// -------------------------| Forgot password link
+.forgot-pass {
+  display: inline-block;
+  margin-top: map-get($roles-spaces, 'molecules');
+  margin-left: map-get($roles-spaces, 'organisms');
+}
