@@ -12,10 +12,6 @@ module.exports = {
       '1px-silver-middle': {
         name: '1px-silver-middle',
         value: `1px solid ${getColorSwatch('silver', 'base')}`
-      },
-      '1px-silver-light': {
-        name: '1px-silver-light',
-        value: `1px solid ${getColorSwatch('silver', 'light')}`
       }
     }
   },
@@ -31,17 +27,9 @@ module.exports = {
         name: 'Four',
         value: '4px'
       },
-      six: {
-        name: 'Six',
-        value: '6px'
-      },
       ten: {
         name: 'Ten',
         value: '10px'
-      },
-      twelve: {
-        name: 'Twelve',
-        value: '12px'
       }
     }
   }

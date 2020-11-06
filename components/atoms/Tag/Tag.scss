@@ -34,7 +34,6 @@ $big-tag-border-radius: map-get($swatches-spaces, 'space-24');
 // -------------------------| Icon
 .icon {
   margin-right: $icon-offset;
-  color: map-get($roles-colors-icons, 'system');
 }
 
 // -------------------------| Tag label

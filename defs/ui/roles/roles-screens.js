@@ -6,12 +6,12 @@ module.exports = {
     value: {
       min: {
         name: 'Min',
-        value: screen('screen-1200')
+        value: screen('screen-320')
       },
 
       max: {
         name: 'Max',
-        value: screen('screen-1440')
+        value: screen('screen-1280')
       }
     }
   }

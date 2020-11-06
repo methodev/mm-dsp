@@ -22,16 +22,6 @@ module.exports = {
       tooltip: {
         name: 'Tooltip',
         value: transition('transition-250ms')
-      },
-
-      board: {
-        name: 'Board',
-        value: transition('transition-250ms')
-      },
-
-      thumb: {
-        name: 'Thumb',
-        value: transition('transition-100ms')
       }
     }
   }

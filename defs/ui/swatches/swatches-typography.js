@@ -28,29 +28,9 @@ module.exports = {
         name: '16px',
         value: '16px'
       },
-      'font-size-18': {
-        name: '18px',
-        value: '18px'
-      },
-      'font-size-20': {
-        name: '20px',
-        value: '20px'
-      },
       'font-size-22': {
         name: '22px',
         value: '22px'
-      },
-      'font-size-24': {
-        name: '24px',
-        value: '24px'
-      },
-      'font-size-36': {
-        name: '36px',
-        value: '36px'
-      },
-      'font-size-48': {
-        name: '48px',
-        value: '48px'
       }
     }
   },
@@ -88,10 +68,6 @@ module.exports = {
         name: 'Normal',
         value: 'normal'
       },
-      'line-height-0': {
-        name: 'Zero',
-        value: 0
-      },
       'line-height-100percent': {
         name: '100%',
         value: 1
@@ -100,21 +76,9 @@ module.exports = {
         name: '150%',
         value: 1.5
       },
-      'line-height-12px': {
-        name: '12px',
-        value: '12px'
-      },
       'line-height-16px': {
         name: '16px',
         value: '16px'
-      },
-      'line-height-24px': {
-        name: '24px',
-        value: '24px'
-      },
-      'line-height-36px': {
-        name: '36px',
-        value: '36px'
       }
     }
   }
