@@ -8,10 +8,6 @@ module.exports = {
         name: 'Body',
         value: getColorSwatch('black', 'base')
       },
-      heading: {
-        name: 'Heading',
-        value: getColorSwatch('black', 'base')
-      },
       negative: {
         name: 'Negative',
         value: getColorSwatch('white', 'base')
@@ -81,20 +77,6 @@ module.exports = {
     }
   },
 
-  icons: {
-    name: 'Icons',
-    value: {
-      default: {
-        name: 'Default',
-        value: getColorSwatch('blue', 'dark')
-      },
-      system: {
-        name: 'System',
-        value: getColorSwatch('silver', 'dark')
-      }
-    }
-  },
-
   backgrounds: {
     name: 'Backgrounds',
     value: {
@@ -105,10 +87,6 @@ module.exports = {
       app: {
         name: 'App',
         value: getColorSwatch('white', 'vanish')
-      },
-      header: {
-        name: 'Header',
-        value: getColorSwatch('white', 'base')
       },
       board: {
         name: 'Board',

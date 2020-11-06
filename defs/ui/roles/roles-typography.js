@@ -2,8 +2,7 @@ const {
   fontFamily,
   fontSize,
   fontWeight,
-  lineHeight,
-  letterSpacing
+  lineHeight
 } = require('../swatches/services/typography');
 
 module.exports = {
@@ -95,10 +94,6 @@ module.exports = {
       menu: {
         name: 'Menu',
         value: lineHeight('line-height-16px')
-      },
-      'super-small': {
-        name: 'Super small',
-        value: lineHeight('line-height-12px')
       },
       'form-note': {
         name: 'Form note',

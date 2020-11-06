@@ -13,6 +13,7 @@
       v-tooltip="iconLabel"
       :class="[$style.icon, { [$style.hoverable]: iconLabel }]"
       :name="icon"
+      kind="light-gray"
     />
     <span :class="$style.tagLabel">{{ label | truncate(maxLength) }}</span>
     <IconButton
