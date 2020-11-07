@@ -9,8 +9,7 @@ const order = [
   'molecules',
   'organisms',
   'boards',
-  'charts',
-  'interactives'
+  'overlays'
 ];
 
 export default {

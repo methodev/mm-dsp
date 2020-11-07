@@ -13,7 +13,6 @@ module.exports = {
     `${stories}/atoms/${files}`,
     `${stories}/molecules/${files}`,
     `${stories}/organisms/${files}`,
-    `${stories}/modals/${files}`,
     `${stories}/boards/${files}`,
     `./pages/overlays/${files}`
   ],

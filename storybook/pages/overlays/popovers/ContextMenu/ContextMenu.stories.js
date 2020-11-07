@@ -47,7 +47,7 @@ const mixin = {
   }
 };
 
-storiesOf('Interactives/Overlays/Popovers', module).add(
+storiesOf('Overlays/Popovers', module).add(
   'ContextMenu',
   () => ({
     mixins: [mixin],
