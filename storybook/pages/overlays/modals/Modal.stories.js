@@ -9,7 +9,7 @@ const modals = {};
 const names = {};
 
 const components = require.context(
-  '@/components/modals',
+  '@/components/organisms/modals',
   true,
   /[a-z]\w+\.vue$/
 );
@@ -28,7 +28,7 @@ components.keys().forEach((filename) => {
   modals[modalName] = { ...modal.default, i18n };
 });
 
-const stories = storiesOf('Interactives/Overlays/Modals', module);
+const stories = storiesOf('Overlays/Modals', module);
 
 for (const name in names) {
   stories.add(

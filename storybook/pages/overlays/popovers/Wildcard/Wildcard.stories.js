@@ -18,7 +18,7 @@ const lorem = new LoremIpsum({
 });
 const content = lorem.generateParagraphs(1);
 
-storiesOf('Interactives/Overlays/Popovers', module).add(
+storiesOf('Overlays/Popovers', module).add(
   'Wildcard',
   () => ({
     template: `

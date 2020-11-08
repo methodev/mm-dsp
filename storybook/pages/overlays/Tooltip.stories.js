@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { select, text } from '@storybook/addon-knobs';
 import { placements } from '@/defs/settings/v-tooltip';
 
-storiesOf('Interactives|Overlays', module).add(
+storiesOf('Overlays', module).add(
   'Tooltip',
   () => ({
     template: `
