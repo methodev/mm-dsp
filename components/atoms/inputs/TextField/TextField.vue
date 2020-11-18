@@ -52,6 +52,7 @@
     </div>
     <div :class="$style.bottom">
       <FormNote v-if="$slots['system-note']" :class="$style.systemNote">
+        <!-- @slot *Provides a system note place in the field.* -->
         <slot name="system-note" />
       </FormNote>
       <FormNote
@@ -68,9 +69,17 @@
 </template>
 
 <script>
+/**
+ * `TextField` is for showing a field of text.
+ */
+
 export default {
   inheritAttrs: false,
   props: {
+    /**
+     * *Expects the type of the field.*<br>
+     * *Available values:* `"text"` | `"search"` | `"number"` | `"email"` | `"password"`
+     */
     type: {
       type: String,
       default: 'text',
@@ -80,54 +89,93 @@ export default {
         );
       }
     },
+    /**
+     * *Expects the placeholder.*
+     */
     placeholder: {
       type: String,
       required: true
     },
+    /**
+     * *Expects an optional placeholder info.*
+     */
     placeholderInfo: {
       type: String,
       default: ''
     },
+    /**
+     * *Expects the name.*
+     */
     name: {
       type: String,
       required: true
     },
+    /**
+     * *Expects the ID.*
+     */
     id: {
       type: String,
       required: true
     },
+    /**
+     * *Used for `v-model` support.*
+     */
     value: {
       type: [String, Number],
       default: ''
     },
+    /**
+     * *Expects an optional system note.*
+     */
     systemNote: {
       type: String,
       default: null
     },
+    /**
+     * *Expects an optional maximum allowed length.*
+     */
     maxLength: {
       type: [Number, null],
       default: null
     },
+    /**
+     * *Expects an optional parameter that specifies if the field is valid.*
+     */
     invalid: {
       type: Boolean,
       default: false
     },
+    /**
+     * *Expects an optional parameter that specifies if the field is disabled.*
+     */
     disabled: {
       type: Boolean,
       default: false
     },
+    /**
+     * *Expects an optional parameter that specifies if the field is automatically focused.*
+     */
     autofocus: {
       type: Boolean,
       default: false
     },
+    /**
+     * *Expects an optional parameter that specifies if the field is initially opened.*
+     */
     opened: {
       type: Boolean,
       default: false
     },
+    /**
+     * *Expects an optional parameter that specifies if the field is without a footer.*
+     */
     footless: {
       type: Boolean,
       default: false
     },
+    /**
+     * *Expects an optional parameter that specifies if the field has a static placeholder.*
+     */
     staticPlaceholder: {
       type: Boolean,
       default: false
@@ -145,6 +193,10 @@ export default {
         input: this.updateInputValue,
         keyup: ({ keyCode, target }) => {
           if (keyCode === 13) {
+            /**
+             * *Passthrough enter pressed event.*
+             * @type {Event}
+             */
             this.$emit('enter', target.value);
             this.$refs.input.blur();
           }
@@ -179,10 +231,18 @@ export default {
 
   methods: {
     updateInputValue(event) {
+      /**
+       * *Passthrough input event.*
+       * @type {Event}
+       */
       this.$emit('input', event.target.value);
     },
 
     clearInput(e) {
+      /**
+       * *Passthrough clear event.*
+       * @type {Event}
+       */
       this.$emit('clear');
       this.$refs.input.focus();
       e.preventDefault();
