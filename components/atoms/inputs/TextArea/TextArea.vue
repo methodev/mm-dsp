@@ -62,49 +62,86 @@
 </template>
 
 <script>
+/**
+ * `TextArea` is for showing an area of text.
+ */
+
 export default {
   inheritAttrs: false,
   props: {
+    /**
+     * *Expects the placeholder.*
+     */
     placeholder: {
       type: String,
       required: true
     },
+    /**
+     * *Expects the name.*
+     */
     name: {
       type: String,
       required: true
     },
+    /**
+     * *Expects the ID.*
+     */
     id: {
       type: String,
       required: true
     },
+    /**
+     * *Used for `v-model` support.*
+     */
     value: {
       type: [String, Number],
       default: ''
     },
+    /**
+     * *Expects an optional system note.*
+     */
     systemNote: {
       type: String,
       default: undefined
     },
+    /**
+     * *Expects an optional maximal allowed length.*
+     */
     maxLength: {
       type: Number,
       default: undefined
     },
+    /**
+     * *Expects an optional parameter that specifies if the area is valid.*
+     */
     invalid: {
       type: Boolean,
       default: false
     },
+    /**
+     * *Expects an optional parameter that specifies if the area is disabled.*
+     */
     disabled: {
       type: Boolean,
       default: false
     },
+    /**
+     * *Expects an optional parameter that specifies if the area is automatically focused.*
+     */
     autofocus: {
       type: Boolean,
       default: false
     },
+    /**
+     * *Expects an optional parameter that specifies if the area is without a footer.
+     */
     footless: {
       type: Boolean,
       default: false
     },
+    /**
+     * *Expects an optional parameter that specifies if the area should allow short-cuts.
+     */
     avoidShortkeys: {
       type: Boolean,
       default: false
@@ -123,9 +160,17 @@ export default {
         ...this.$listeners,
         input: this.updateInputValue,
         focus: () => {
+          /**
+           * *Passthrough focus event.*
+           * @type {Event}
+           */
           this.$emit('focus');
         },
         blur: () => {
+          /**
+           * *Passthrough blur event.*
+           * @type {Event}
+           */
           this.$emit('blur');
         }
       };
@@ -176,7 +221,10 @@ export default {
         // this.elementDefaultHeight = contentHeight;
         event.target.style.height = `${contentHeight}px`;
       });
-
+      /**
+       * *Passthrough input event.*
+       * @type {Event}
+       */
       this.$emit('input', event.target.value);
     },
     clearInput() {
@@ -185,6 +233,10 @@ export default {
         `height: ${this.elementInitialHeight}px`
       );
       this.$refs.input.focus();
+      /**
+       * *Passthrough clear event.*
+       * @type {Event}
+       */
       this.$emit('clear');
     }
   }
