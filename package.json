@@ -13,17 +13,15 @@
     "url": "git://github.com/methodev/mm-dsp.git"
   },
   "scripts": {
-    "stylelint": "echo \"\\033[95mLinting styles…\" && stylelint **/*.scss && echo \"\\033[92mNo errors were found in the styles.\" && echo \"\\033[39m\"",
+    "stylelint": "echo \"\\033[95mLinting styles…\" && stylelint \"**/*.scss\" && echo \"\\033[92mNo errors were found in the styles.\" && echo \"\\033[39m\"",
     "eslint": "echo \"\\033[93mLinting scripts…\" && eslint --ext .js,.vue --ignore-path .gitignore . && echo \"\\033[92mNo errors were found in the scripts.\" && echo \"\\033[39m\"",
     "lint": "npm run stylelint && npm run eslint",
+    "lint-staged": "lint-staged",
     "dev": "start-storybook --no-dll -c storybook -p 7890",
     "build": "build-storybook --no-dll -c storybook -o dist",
     "clean": "del-cli dist"
   },
-  "pre-commit": [
-    "stylelint",
-    "eslint"
-  ],
+  "pre-commit": "lint-staged",
   "devDependencies": {
     "@storybook/addon-a11y": "^6.0.28",
     "@storybook/addon-actions": "^6.0.28",
@@ -56,6 +54,7 @@
     "eslint-plugin-vue": "^7.1.0",
     "husky": "^4.3.0",
     "import-glob": "^1.5.0",
+    "lint-staged": "^10.5.1",
     "lodash": "^4.17.20",
     "lorem-ipsum": "^2.0.3",
     "mobile-device-detect": "^0.4.3",
