@@ -103,5 +103,17 @@
     "vue-template-compiler": "^2.6.12",
     "vuelidate": "^0.7.6",
     "webpack": "^4.44.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(js|vue)": "eslint",
+    "*.scss": "stylelint"
+  },
+  "dependencies": {
+    "husky": "^4.3.0"
   }
 }
